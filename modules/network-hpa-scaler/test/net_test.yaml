@@ -1,0 +1,135 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: net-test-ns
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: net-test-ns
+  name: net-test-sa
+automountServiceAccountToken: true
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: net-test-ns
+  name: net-test-sa-role
+rules:
+- apiGroups: [""]
+  resources: ["endpoints", "services"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["events", "namespaces", "pods", "pods/log"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["get", "create"]
+- apiGroups: ["*"]
+  resources: ["horizontalpodautoscalers"]
+  verbs:
+    - patch
+    - get
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: net-test-ns
+  name: net-test-sa-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: net-test-sa-role
+subjects:
+- kind: ServiceAccount
+  namespace: net-test-ns
+  name: net-test-sa
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: net-test
+  name: net-test
+  namespace: net-test-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: net-test
+  template:
+    metadata:
+      labels:
+        app: net-test
+    spec:
+      nodeSelector:
+          eks.amazonaws.com/nodegroup: ng-1
+      containers:
+        - name: net-test-container
+          env:
+          - name: AWS_REGION
+            value: us-west-2
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 5555
+          resources:
+              requests:
+                memory: 100Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: 
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      serviceAccount: net-test-sa
+      serviceAccountName: net-test-sa
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: net-test
+  #labels:
+  #  #run: net-test
+  #  app: net-test
+  namespace: net-test-ns
+spec:
+  ports:
+  - port: 5555
+    targetPort: 5555
+  selector:
+    app: net-test
+    #run: net-test
+
+---
+
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: net-test-hpa
+  namespace: net-test-ns
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: net-test
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+
