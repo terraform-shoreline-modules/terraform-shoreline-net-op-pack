@@ -71,9 +71,3 @@ variable "script_path" {
   default     = "/tmp"
 }
 
-### variable "enabled" {
-###   type        = bool
-###   description = "If the alarm and bot should be enabled."
-###   default     = true
-### }
-

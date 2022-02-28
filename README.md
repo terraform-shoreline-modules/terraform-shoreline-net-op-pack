@@ -1,6 +1,6 @@
 # Shoreline Terraform Network Op Packs
 
-This [Shoreline Op Pack](#what-are-shoreline-op-packs) contains a collection of modules for Network debugging, alerting, and automatic remediation.
+This [Shoreline Op Pack](#what-are-shoreline-op-packs) contains a collection of modules for network debugging, alerting, and automatic remediation.
 
 ## About Shoreline
 
@@ -34,26 +34,25 @@ Shoreline Op Packs are open-source collections of Terraform configurations and s
       <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
       <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
       <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#C65858"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></td>
-      <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="https://registry.terraform.io/modules/terraform-shoreline-modules/network-op-pack/shoreline/latest/submodules/network-util" target="_blank" rel="noreferrer">Submodule</a>, <a href="https://registry.terraform.io/modules/terraform-shoreline-modules/network-op-pack/shoreline/latest/examples/network-util" target="_blank" rel="noreferrer">Example</a></td>
+      <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="https://registry.terraform.io/modules/terraform-shoreline-modules/net-op-pack/shoreline/latest/submodules/network-util" target="_blank" rel="noreferrer">Submodule</a>, <a href="https://registry.terraform.io/modules/terraform-shoreline-modules/net-op-pack/shoreline/latest/examples/network-util" target="_blank" rel="noreferrer">Example</a></td>
     </tr>  
     <tr>
       <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="#network-hpa-scaler">Network HPA Scaler</a></td>
       <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
       <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
       <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#C65858"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></td>
-      <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="https://registry.terraform.io/modules/terraform-shoreline-modules/network-op-pack/shoreline/latest/submodules/network-hpa-scaler" target="_blank" rel="noreferrer">Submodule</a>, <a href="https://registry.terraform.io/modules/terraform-shoreline-modules/network-op-pack/shoreline/latest/examples/network-hpa-scaler" target="_blank" rel="noreferrer">Example</a></td>
+      <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="https://registry.terraform.io/modules/terraform-shoreline-modules/net-op-pack/shoreline/latest/submodules/network-hpa-scaler" target="_blank" rel="noreferrer">Submodule</a>, <a href="https://registry.terraform.io/modules/terraform-shoreline-modules/net-op-pack/shoreline/latest/examples/network-hpa-scaler" target="_blank" rel="noreferrer">Example</a></td>
     </tr>  
   </tbody>
 </table>
 
 ### Network Util
 
-This is a collection of actions to test network connectivity and latency across a fleet of machines.
+The [Network Util Op Pack](https://registry.terraform.io/modules/terraform-shoreline-modules/net-op-pack/shoreline/latest/submodules/network-util) is a collection of actions to test network connectivity and latency across a fleet of machines.
 
 ### Network HPA Scaler
 
-This is a module to automatically bump a Horizontal Pod Autoscaler based on connection count.
-
+The [Network HPA Scaler Op Pack](https://registry.terraform.io/modules/terraform-shoreline-modules/net-op-pack/shoreline/latest/submodules/network-hpa-scaler) automatically bumps a Horizontal Pod Autoscaler based on the current connection count.
 
 ## Additional resources
 

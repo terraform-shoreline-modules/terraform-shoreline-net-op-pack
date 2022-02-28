@@ -3,11 +3,8 @@ resource "shoreline_alarm" "net_connection_count_alarm" {
   name = "${var.namespace}_net_connection_count_alarm"
   description = "Alarm on network connection count growing larger than a threshold."
   # The query that triggers the alarm: is the connection count greater than a threshold.
-  #fire_query  = "${shoreline_action.connections_to_local_port.name}('${var.protocol}', '${var.port}') >= ${var.connection_threshold}"
   fire_query  = "${module.network_util.connections_to_local_port__action_name}('${var.protocol}', '${var.port}') >= ${var.connection_threshold}"
-  #fire_query  = "${shoreline_action.connections_to_local_port_gt.name}('${var.protocol}', '${var.port}', ${var.connection_threshold})"
   # The query that ends the alarm: is the connection count lower than the threshold.
-  #clear_query = "${shoreline_action.connections_to_local_port.name}('${var.protocol}', '${var.port}') < ${var.connection_threshold}"
   clear_query = "${module.network_util.connections_to_local_port__action_name}('${var.protocol}', '${var.port}') < ${var.connection_threshold}"
   # How often is the alarm evaluated. This is a more slowly changing metric, so every 60 seconds is fine.
   check_interval_sec = "${var.check_interval}"
