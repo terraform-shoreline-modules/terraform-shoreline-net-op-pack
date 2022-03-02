@@ -66,9 +66,6 @@ module "network_hpa_scaler" {
   # Amount of pods to increase by on each alarm invocation
   increment          = 3
 
-  # how frequently to evaluate the alarms
-  check_interval     = 60
-
   providers = { 
     #shoreline = shoreline.main
     shoreline = shoreline
