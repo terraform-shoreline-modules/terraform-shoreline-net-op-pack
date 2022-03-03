@@ -1,6 +1,6 @@
 # Alarm that triggers when the connection count exceeds a threshold.
 resource "shoreline_alarm" "net_connection_count_alarm" {
-  name = "${var.namespace}_net_connection_count_alarm"
+  name = "${var.prefix}net_connection_count_alarm"
   description = "Alarm on network connection count growing larger than a threshold."
   # The query that triggers the alarm: is the connection count greater than a threshold.
   fire_query  = "${module.network_util.connections_to_local_port__action_name}('${var.protocol}', '${var.port}') >= ${var.connection_threshold}"

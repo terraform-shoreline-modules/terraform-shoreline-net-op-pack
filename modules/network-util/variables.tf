@@ -7,10 +7,10 @@
 #  description = "The API URL for the shoreline service."
 #}
 
-variable "namespace" {
+variable "prefix" {
   type        = string
-  description = "A namespace to isolate multiple instances of the module with different parameters."
-  default     = "net"
+  description = "A prefix to isolate multiple instances of the module with different parameters."
+  default     = "net_"
 }
 
 

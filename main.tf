@@ -28,7 +28,7 @@ provider "shoreline" {
 # Example instantiation of the JVM Trace OpPack:
 module "net_example" {
   source             = "./modules/network-hpa-scaler"
-  namespace          = "net_example"
+  prefix             = "net_example_"
 
   port               = 5555
   protocol           = "tcp"

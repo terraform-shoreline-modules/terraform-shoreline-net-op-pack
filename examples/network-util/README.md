@@ -32,8 +32,8 @@ module "network_util" {
   # Location of the module
   source = "terraform-shoreline-modules/net-op-pack/shoreline//modules/network-util"
 
-  # Namespace to allow multiple instances of the module, with different params
-  namespace = "net_example"
+  # Prefix to allow multiple instances of the module, with different params
+  prefix = "net_example"
 
   providers = { 
     #shoreline = shoreline.main

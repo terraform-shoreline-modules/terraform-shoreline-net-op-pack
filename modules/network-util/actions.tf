@@ -12,7 +12,7 @@ locals {
 
 # Action to ping remote hosts
 resource "shoreline_action" "ping_action" {
-  name = "${var.namespace}_ping"
+  name = "${var.prefix}ping"
   description = "Ping the remote host at ADDR."
   # Parameters passed in: 
   #  ADDR: the host or address to ping
@@ -36,7 +36,7 @@ resource "shoreline_action" "ping_action" {
 
 # Action to lookup remote hosts
 resource "shoreline_action" "dig_ip_action" {
-  name = "${var.namespace}_dig_ip"
+  name = "${var.prefix}dig_ip"
   description = "Lookup IP entries for a remote host at ADDR."
   # Parameters passed in: 
   #  ADDR: the host or address to lookup
@@ -60,7 +60,7 @@ resource "shoreline_action" "dig_ip_action" {
 
 # Action to curl a URL
 resource "shoreline_action" "curl_action" {
-  name = "${var.namespace}_curl"
+  name = "${var.prefix}curl"
   description = "Curl the given URL."
   # Parameters passed in: 
   #  ENDPOINT: the URL to curl
@@ -84,7 +84,7 @@ resource "shoreline_action" "curl_action" {
 
 # Action to get curl status from a URL
 resource "shoreline_action" "curl_status_action" {
-  name = "${var.namespace}_curl_status"
+  name = "${var.prefix}curl_status"
   description = "Curl the given URL and return the status code."
   # Parameters passed in: 
   #  ENDPOINT: the URL to curl
@@ -110,7 +110,7 @@ resource "shoreline_action" "curl_status_action" {
 # Action to calculate number of connections to a local port
 # NOTE: This only captures "established" connections, not syn-*/timed-wait/closing/etc
 resource "shoreline_action" "connections_to_local_port_gt" {
-  name = "${var.namespace}_connections_to_local_port_gt"
+  name = "${var.prefix}connections_to_local_port_gt"
   description = "Count the connections to a local port 'PORT' on protocol 'PROTO' (tcp or udp)."
   # Parameters passed in: 
   #  PROTO: protocol, either 'tcp' or 'udp'
@@ -141,7 +141,7 @@ resource "shoreline_action" "connections_to_local_port_gt" {
 # Action to calculate number of connections to a local port
 # NOTE: This only captures "established" connections, not syn-*/timed-wait/closing/etc
 resource "shoreline_action" "connections_to_local_port" {
-  name = "${var.namespace}_connections_to_local_port"
+  name = "${var.prefix}connections_to_local_port"
   description = "Count the connections to a local port 'PORT' on protocol 'PROTO' (tcp or udp)."
   # Parameters passed in: 
   #  PROTO: protocol, either 'tcp' or 'udp'
@@ -170,7 +170,7 @@ resource "shoreline_action" "connections_to_local_port" {
 
 # Action to calculate number of connections to a remote port
 resource "shoreline_action" "connections_to_remote_port" {
-  name = "${var.namespace}_connections_to_remote_port"
+  name = "${var.prefix}connections_to_remote_port"
   description = "Count the connections to a remote port 'PORT' on protocol 'PROTO' (tcp or udp)."
   # Parameters passed in: 
   #  PROTO: protocol, either 'tcp' or 'udp'

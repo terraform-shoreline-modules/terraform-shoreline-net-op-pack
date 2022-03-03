@@ -10,8 +10,8 @@
 #     # Location of the module:
 #     source             = "./"
 #   
-#     # Namespace to allow multiple instances of the module, with different params:
-#     namespace          = "net"
+#     # Prefix to allow multiple instances of the module, with different params:
+#     prefix             = "net_"
 #   
 #     # Resource query to select the affected resources:
 #     resource_query     = "net-test"
@@ -40,7 +40,7 @@ terraform {
 
 module "network_util" {
   source = "../network-util"
-  namespace = var.namespace
+  prefix = var.prefix
   providers = {
     shoreline = shoreline
   }

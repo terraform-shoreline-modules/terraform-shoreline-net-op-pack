@@ -19,7 +19,7 @@ provider "shoreline" {
 
 
 locals {
-  namespace          = "net"
+  prefix = "net_"
 }
 
 # NAMESPACE="net-test-ns" AUTOSCALER="net-test-hpa" HPA_MAX="10" INCREMENT="1" ../data/net_scale_hpa.sh
@@ -28,7 +28,7 @@ locals {
 module "network_hpa_scaler" {
   #url = "${var.shoreline_url}"
   source             = "../"
-  namespace          = "${local.namespace}"
+  prefix             = "${local.prefix}"
   port               = 5555
   protocol           = "tcp"
   resource_query     = "pods | app='net-test'"
@@ -50,7 +50,7 @@ module "network_hpa_scaler" {
 
 # Push the client/server script that creates connections.
 resource "shoreline_file" "net_connector_script" {
-  name = "${local.namespace}_net_connector_script"
+  name = "${local.prefix}net_connector_script"
   description = "client/server python script."
   input_file = "${path.module}/connector.py"
   destination_path = "/tmp/connector.py"

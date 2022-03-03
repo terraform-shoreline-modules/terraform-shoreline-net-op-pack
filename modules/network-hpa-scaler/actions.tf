@@ -1,7 +1,7 @@
 
 # Action to perform the HPA resize
 resource "shoreline_action" "network_hpa_resize" {
-  name = "${var.namespace}_network_hpa_resize"
+  name = "${var.prefix}network_hpa_resize"
   description = "Resize horizontal pod autoscaler (HPA)"
   # Run the resize script (which was copied by a file object).
   command = "`cd ${var.script_path} && chmod +x ./net_scale_hpa.sh && NAMESPACE=\"${var.hpa_namespace}\" AUTOSCALER=\"${var.hpa_name}\" HPA_MAX=\"${var.max_size}\" INCREMENT=\"${var.increment}\" ./net_scale_hpa.sh`"

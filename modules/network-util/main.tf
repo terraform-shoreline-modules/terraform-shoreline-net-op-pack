@@ -10,8 +10,8 @@
 #     # Location of the module:
 #     source             = "./"
 #   
-#     # Namespace to allow multiple instances of the module, with different params:
-#     namespace          = "net"
+#     # Prefix to allow multiple instances of the module, with different params:
+#     prefix          = "net_"
 #   
 #   }
 

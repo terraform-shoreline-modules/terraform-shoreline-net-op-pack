@@ -36,8 +36,8 @@ module "network_hpa_scaler" {
   # Frequency to evaluate alarm conditions in seconds
   check_interval = 60
 
-  # Namespace to allow multiple instances of the module, with different params
-  namespace = "net_example"
+  # Prefix to allow multiple instances of the module, with different params
+  prefix = "net_example_"
 
   # Resource query to select the affected resources
   resource_query = "pods | app='net-test'"
