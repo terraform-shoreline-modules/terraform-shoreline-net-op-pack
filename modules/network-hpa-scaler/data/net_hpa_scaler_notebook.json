@@ -1,0 +1,60 @@
+{
+  "cells": [
+    {
+      "content": "# Check connectivity and latency\nManually check connectivity and latency (via ping to a well known server) on a set of pods",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | name =~ 'shoreline' | net_ping('8.8.8.8')",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "# Check DNS\nManually check DNS on a set of pods",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | name =~ 'shoreline' | net_dig_ip('example.com')",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "# Check HTTP response code\nManually check HTTP response code from a set of pods",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | name =~ 'shoreline' | net_curl('https://www.example.com/')",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "# Check connection counts\nManually check connection counts on a set of pods",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | name =~ 'shoreline' | net_connections_to_local_port('tcp', '5555')",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "pods | name =~ 'shoreline' | net_connections_to_remote_port('tcp', '5555')",
+      "enabled": true,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    }
+  ],
+  "enabled": true,
+  "params": []
+}
