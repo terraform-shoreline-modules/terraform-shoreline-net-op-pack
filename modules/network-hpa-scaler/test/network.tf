@@ -58,3 +58,12 @@ resource "shoreline_file" "net_connector_script" {
   enabled = true
 }
 
+# Push the yaml script for setting up k8s object.
+resource "shoreline_file" "net_k8s_manifest" {
+  name = "${local.prefix}net_k8s_script"
+  description = "manifest file for k8s configuration."
+  input_file = "${path.module}/net_test.yaml"
+  destination_path = "/tmp/net_test.yaml"
+  resource_query = "pods | app='shoreline'"
+  enabled = true
+}
